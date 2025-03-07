@@ -3,10 +3,10 @@ from langchain_openai import OpenAI
 from langchain import PromptTemplate
 
 st.set_page_config(
-    page_title = "Blog Post Generator"
+    page_title = "Generador de Publicaciones de Blog"
 )
 
-st.title("Blog Post Generator")
+st.title("Generador de Publicaciones de Blog")
 
 openai_api_key = st.sidebar.text_input(
     "OpenAI API Key",
@@ -16,12 +16,12 @@ openai_api_key = st.sidebar.text_input(
 def generate_response(topic):
     llm = OpenAI(openai_api_key=openai_api_key)
     template = """
-    As experienced startup and venture capital writer, 
-    generate a 400-word blog post about {topic}
+    Como escritor experimentado en startups y capital de riesgo,
+    genera una publicación de blog de 400 palabras sobre {topic}
     
-    Your response should be in this format:
-    First, print the blog post.
-    Then, sum the total number of words on it and print the result like this: This post has X words.
+    Tu respuesta debe seguir este formato:
+    Primero, imprime la publicación del blog.
+    Luego, suma el número total de palabras y muestra el resultado de esta manera: Esta publicación tiene X palabras.
     """
     prompt = PromptTemplate(
         input_variables = ["topic"],
